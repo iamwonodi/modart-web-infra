@@ -180,7 +180,7 @@ module "target_group" {
 module "ingress_rule" {
   count = module.model.is_dedicated ? 0 : 1
 
-  source = "git::https://github.com/iamwonodi/terraform-aws-sg-ingress-rule.git?ref=v1.2.1"
+  source = "git::https://github.com/iamwonodi/terraform-aws-sg-ingress-rule.git?ref=v1.2.2"
 
   description = "Allow the ${var.tier} load balancer to reach ${var.service_name} on port ${var.service_port}"
 
