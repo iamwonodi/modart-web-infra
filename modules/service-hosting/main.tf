@@ -165,7 +165,7 @@ module "launch_template" {
 }
 
 module "autoscaling_group" {
-  source = "git::https://github.com/iamwonodi/terraform-aws-autoscaling.git?ref=v3.0.0"
+  source = "git::https://github.com/iamwonodi/terraform-aws-autoscaling.git?ref=v3.0.1"
 
   project_name = var.project_name
   environment  = var.environment
