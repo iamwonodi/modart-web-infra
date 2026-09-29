@@ -19,7 +19,7 @@ jobs:
 
   scripts:
     name: Scripts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
@@ -30,9 +30,14 @@ jobs:
       - name: Script Tests
         run: bash scripts/ci/tests/run-all.sh
 
+      # locals only in locals.tf, data only in data.tf, and every workflow on a
+      # pinned runner image.
+      - name: File Layout
+        run: bash scripts/ci/check-file-layout.sh .
+
   terraform:
     name: Terraform
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7

@@ -36,7 +36,7 @@ jobs:
 
   detect-changes:
     name: Detect Target Environments
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       environments: ${{ steps.resolve.outputs.environments }}
     steps:
@@ -65,7 +65,7 @@ jobs:
     name: Plan (${{ matrix.environment }})
     needs: detect-changes
     if: needs.detect-changes.outputs.environments != '[]' && needs.detect-changes.outputs.environments != ''
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
