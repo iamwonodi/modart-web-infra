@@ -8,6 +8,7 @@ This is a **blueprint**: many services clone it. Never commit anything service- 
 - Read the real files, and the modules a file calls, before proposing a change. Verify against provider documentation rather than recalling.
 - Ask before building. Classify review findings CRITICAL / HIGH / MEDIUM / LOW / OPTIONAL, say PASS when something is correct, and do not rewrite working code for style.
 - Comments explain why, not what. Scripts are exercised against real inputs and their error paths before they are called done.
+- File layout: every top-level `locals` block in `locals.tf`, every `data` block in `data.tf`. Workflows run on `ubuntu-24.04`, never `ubuntu-latest`. `scripts/ci/check-file-layout.sh` fails CI otherwise.
 
 ## Where things live
 
@@ -26,6 +27,7 @@ terraform fmt -recursive
 (cd modules/service-model && terraform init -backend=false && terraform test)
 (cd infrastructure/development && terraform init -backend=false && terraform validate)
 bash scripts/ci/tests/run-all.sh
+bash scripts/ci/check-file-layout.sh .
 ```
 
 ## Open items
